@@ -29,11 +29,17 @@ The Design of Dynamic Ensemble Selection Strategy for the Error-Correcting Outpu
 	data/exp:	Storing experimental results.
 
 ## Program entrance
-	V1.py:		the running code of the paper
-	F1.py:		the controlled trial based on the data complexity(F1)
-	F2.py:		the controlled trial based on the data complexity(F2)
-	F3.py:		the controlled trial based on the data complexity(F3)
+	main.py:	the running code of the paper.
+
+## Parameter setting
+	main.py:
+		exp_num:		Number of experiments.
+		decoder_code:		Type of decoder.
+		complexity_type:	Type of data complexity.
+	Tools/FeatureSelect.py:
+		alpha:			Iteration Step.
+		beta:			Size of comparison interval.
 
 ## Run project
-	Run the following command:	python V1.py
+	Run the following command:	python main.py
 	All result infos will be written into the folder 'data'
