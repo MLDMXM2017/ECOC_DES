@@ -18,16 +18,16 @@ A Dynamic Ensemble Selection Strategy for Improving Error Correcting Output Code
 ## Data storage
 	data/source:	Storing source data.
 	data/split:	Storing splited data.
-	data/norm:    Storing normalized data.
+	data/norm:    	Storing normalized data.
 	data/exp_mat:	Storing coding matrix.
 	data/support:	Storing feature score.
-	data/fea_num: Storing feature selected number.
+	data/fea_num: 	Storing feature selected number.
 	data/exp_data:  Storing experimental data.
 	data/exp:	Storing experimental results.
 
 ## Program entrance
-	main.py:		the running code of the conference paper
+	main.py:	the running code of the conference paper
 
 ## Run project
-	Run the following command:		python main.py
+	Run the following command:	python main.py
 	All result infos will be written into the folder 'data'
