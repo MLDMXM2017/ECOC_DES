@@ -2,6 +2,7 @@ import numpy as np
 import copy
 from sklearn import neighbors
 from sklearn.linear_model import SGDClassifier
+from sklearn.metrics import accuracy_score
 from DataComplexity.Complexity_tool import *
 import logging
 
@@ -323,3 +324,44 @@ def get_complexity_D2(data,label,k=5):
     D2 = sum / len(data)
 
     return D2
+
+def get_complexity_V1(true, pred):
+    """
+    this fun is calculate the V1 index
+    V1 is the error recognition rate of the classifier
+
+    :param true:
+    :param pred:
+    """
+    V1 = 1.0 - accuracy_score(true, pred)
+
+    return V1
+    
+def get_complexity(complexity_type, X_train, y_trn_, y_vld_, pred_valid):
+    if complexity_type == 'F1':
+        positive_X = X_train[y_trn_==1]
+        positive_y = y_trn_[y_trn_==1]
+        negative_X = X_train[y_trn_==-1]
+        negative_y = y_trn_[y_trn_==-1]
+        F1_value = get_complexity_F1(positive_X, positive_y, negative_X, negative_y)
+        return (1./(1.+np.exp(-1*F1_value))-0.5)*2
+    elif complexity_type == 'F2':
+        positive_X = X_train[y_trn_==1]
+        positive_y = y_trn_[y_trn_==1]
+        negative_X = X_train[y_trn_==-1]
+        negative_y = y_trn_[y_trn_==-1]
+        F2_value = get_complexity_F2(positive_X, positive_y, negative_X, negative_y)
+        return 1.0 - F2_value
+    elif complexity_type == 'F3':
+        positive_X = X_train[y_trn_==1]
+        positive_y = y_trn_[y_trn_==1]
+        negative_X = X_train[y_trn_==-1]
+        negative_y = y_trn_[y_trn_==-1]
+        F3_value = get_complexity_F3(positive_X, positive_y, negative_X, negative_y)
+        return F3_value
+    elif complexity_type == 'V1':
+        V1_value = get_complexity_V1(y_vld_[y_vld_!=0], pred_valid)
+        return 1.0 - V1_value
+    else:
+        print("Complexity type error!")
+        return
