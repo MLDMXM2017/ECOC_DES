@@ -20,13 +20,13 @@ The Design of Dynamic Ensemble Selection Strategy for the Error-Correcting Outpu
 
 ## Data storage
 	data/source:	Storing source data.
-	data/split:		Storing splited data.
+	data/split:	Storing splited data.
 	data/norm:	Storing normalized data.
 	data/exp_mat:	Storing coding matrix.
 	data/support:	Storing feature score.
 	data/fea_num:	Storing feature selected number.
 	data/exp_data:	Storing experimental data.
-	data/exp:		Storing experimental results.
+	data/exp:	Storing experimental results.
 
 ## Program entrance
 	V1.py:		the running code of the paper
@@ -35,5 +35,5 @@ The Design of Dynamic Ensemble Selection Strategy for the Error-Correcting Outpu
 	F3.py:		the controlled trial based on the data complexity(F3)
 
 ## Run project
-	Run the following command:		python V1.py
+	Run the following command:	python V1.py
 	All result infos will be written into the folder 'data'
