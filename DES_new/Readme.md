@@ -1,6 +1,8 @@
 # ECOC_DES Code introduction
 Dynamic ensemble selection strategy for the Error-Correcting Output Codes Family.
+
 This is the implementation for paper:
+
 The Design of Dynamic Ensemble Selection Strategy for the Error-Correcting Output Codes Family.
 
 ## Environment
