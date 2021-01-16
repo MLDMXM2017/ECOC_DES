@@ -1,7 +1,9 @@
 # ECOC_DES Code introduction
-Dynamic ensemble selection strategy to improve Error Correcting Output Codes Algorithm
+Dynamic ensemble selection strategy to improve Error Correcting Output Codes Algorithm.
+
 This is the implementation for paper:
-A Dynamic Ensemble Selection Strategy for Improving Error Correcting Output Codes Algorithm 
+
+A Dynamic Ensemble Selection Strategy for Improving Error Correcting Output Codes Algorithm.
 ## Environment
 	Windows 10 64bit
 	python 3.7.6
