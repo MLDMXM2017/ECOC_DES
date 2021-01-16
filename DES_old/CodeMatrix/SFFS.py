@@ -1,12 +1,10 @@
-# -*- coding: utf-8 -*-
-# author: sunmengxin
-# time: 2018/1/20 12:15
-# file: Greedy_Search.py
-# description: this model define a sequential floating forward searching(SFFS) method
+"""
+this model define a sequential floating forward searching(SFFS) method
+"""
 
+from CodeMatrix.Matrix_tool import _get_data_subset
 import numpy as np
 from CodeMatrix import Criterion
-from CodeMatrix.Matrix_tool import get_data_subset
 
 
 def sffs(data, labels, judge_score=Criterion.divide_score, **param):
@@ -40,8 +38,8 @@ def sffs(data, labels, judge_score=Criterion.divide_score, **param):
             other_label = list(unique_label)
             for i in target_label:
                 other_label.remove(i)
-            target_data, target_labels = get_data_subset(data, labels, target_label)
-            other_data, other_labels = get_data_subset(data, labels, other_label)
+            target_data, target_labels = _get_data_subset(data, labels, target_label)
+            other_data, other_labels = _get_data_subset(data, labels, other_label)
             score = judge_score(target_data, target_labels, other_data, other_labels, **param)
             if score > best_score:
                 best_score = score
@@ -68,8 +66,8 @@ def sffs(data, labels, judge_score=Criterion.divide_score, **param):
                     continue
                 other_label_temp = list(other_label)
                 other_label_temp.append(label)
-                target_data, target_labels = get_data_subset(data, labels, target_label_temp)
-                other_data, other_labels = get_data_subset(data, labels, other_label_temp)
+                target_data, target_labels = _get_data_subset(data, labels, target_label_temp)
+                other_data, other_labels = _get_data_subset(data, labels, other_label_temp)
                 score = judge_score(target_data, target_labels, other_data, other_labels)
                 if score > best_score:
                     best_score = score
