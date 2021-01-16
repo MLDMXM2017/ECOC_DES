@@ -3,7 +3,8 @@ Dynamic ensemble selection strategy to improve Error Correcting Output Codes Alg
 
 This is the implementation for paper:
 
-A Dynamic Ensemble Selection Strategy for Improving Error Correcting Output Codes Algorithm.
+"J. Y. Zou, K. H. Liu, and Y. F. Huang, "A Dynamic Ensemble Selection Strategy for Improving Error Correcting Output Codes Algorithm," in 2019 IEEE Intl Conf on Parallel & Distributed Processing with Applications, Big Data & Cloud Computing, Sustainable Computing & Communications, Social Computing & Networking (ISPA/BDCloud/SocialCom/SustainCom), 2020."
+
 ## Environment
 	Windows 10 64bit
 	python 3.7.6
