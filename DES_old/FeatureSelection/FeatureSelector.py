@@ -5,7 +5,6 @@ Code by Tycho Zhong, Dec 6, 2017.
 """
 
 import numpy as np
-from DataComplexity import datacomplexity
 
 class FeatureSelector(object):
     """ Select k best features.
@@ -165,72 +164,3 @@ class VarianceSelector(FeatureSelector):
     """
     def _value(self, f, y):
         return f.var()
-
-
-class DataComplexitySelector(FeatureSelector):
-    """
-    Use data complexities as selectors.
-
-    Attributes:
-        dc: object
-            The Data Complexity object.
-
-    Methods:
-        _set_dc(): Call the Data complexity object.
-        _multi(X, y): dc calculate data complexities only when data contains just two class label.
-            This methods calculate all two-class combinations, and return the average value.
-
-    Descriptions:
-        _set_dc(): Call the Data complexity object.
-
-        _multi(X, y): dc calculate data complexities only when data contains just two class label.
-            This methods calculate all two-class combinations, and return the average value.
-            Parameters:
-                X : numpy array of shape [n_samples, n_features]
-                    Training set.
-                y : numpy array of shape [n_samples]
-                    Target values.
-
-            Returns:
-                v : Average value of data complexities.
-    """
-    def _set_dc(self):
-        """Select a data complexity."""
-        raise NotImplementedError('Unimplemented Class.')
-
-    def _value(self, f, y):
-        raise NotImplementedError('Unimplemented Class.')
-
-    def _multi(self, f, y):
-        y_names = np.unique(y)
-        y_cnt = len(y_names)
-        v_mat = np.zeros((y_cnt, y_cnt))
-        self._set_dc()
-        for i in range(y_cnt):
-            for j in range(i + 1, y_cnt):
-                v_mat[i, j] = v_mat[j, i] = self.dc.fi_score_value(f[y == y_names[i]], f[y == y_names[j]])
-        return v_mat.sum() / (2 * y_cnt * (y_cnt - 1))
-
-
-class F1Selector(DataComplexitySelector):
-    def _set_dc(self):
-        self.dc = datacomplexity.DCF1()
-
-    def _value(self, f, y):
-        return self._multi(f, y)
-
-
-class F2Selector(DataComplexitySelector):
-    def _set_dc(self):
-        self.dc = datacomplexity.DCF2()
-
-    def _value(self, f, y):
-        return 1 - self._multi(f, y)
-
-
-class F3Selector(DataComplexitySelector):
-    def _set_dc(self):
-        self.dc = datacomplexity.DCF3()
-
-    def _value(self, f, y):
-        return self._multi(f, y)
