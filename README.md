@@ -1,8 +1,4 @@
 # ECOC_DES
-The directory structure:
-    /DES_old
-    /DES_new
-    Readme.md
 
 ## Difference between DES_old and DES_new
 
@@ -19,7 +15,7 @@ The directory structure:
 #### Algorithm
     Choose feature subsets with data complexity instead of classifier accuracy  —— As shown in line 70, main.py and function "get_complexity" in DataComplexity/Get_Complexity.py
     Improve Fisher measure with Gaussian probability density function           —— As shown in line 95, main.py and function "fisher_gaussia_measure" in Tools/Distance.py
-    Add weights to the column classifier during decoding    —— As shown in line 120, main.py
+    Add weights to the column classifier during decoding                        —— As shown in line 120, main.py
 
 #### Experiment
     More diverse data set
