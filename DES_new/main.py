@@ -4,6 +4,7 @@ import math
 import numpy as np
 from Classifiers.BaseClassifier import get_base_clf
 from Classifiers.ECOCClassifier import SimpleECOCClassifier, predict_binary
+from DataComplexity.Get_Complexity import get_complexity
 from Decoding.Decoder import get_decoder
 from Tools.Distance import fisher_measure, fisher_gaussia_measure
 from Tools.FeatureSelect import fea_slt_number, feature_select
@@ -66,7 +67,7 @@ def do_exp(idx, bcn, fname, feature_space, matrix_code):
             ecoc.fit(X_train, y_train)
             pred_valid = ecoc.predict_(X_valid[y_vld_!=0], col_i)
             estimators = ecoc.estimators_[col_i]
-            weight = accuracy_score(y_vld_[y_vld_!=0], pred_valid)
+            weight = get_complexity(complexity_type, X_train, y_trn_, y_vld_, pred_valid)
             print('%s %d: %f' % (fs, col_i, weight))
 
             data_set[fs+s_col_i] = {
@@ -160,6 +161,8 @@ if __name__ == '__main__':
                                                         #ECOC algorithms
     base_cly_names = ['SVM', 'Logi', 'KNN', 'DTree', 'Bayes']
                                                         #Base classifiers
+    complexity_types = ['V1', 'F1', 'F2', 'F3']         #Data complexity types
+    complexity_type = 'V1'      #Set the data complexity used in the experiment
 
     # Segmentation of data into train:validation:test=3:1:1
     train_valid_test_split(file_names, src_dir, spl_dir, exp_num)
@@ -180,4 +183,3 @@ if __name__ == '__main__':
                     do_exp(idx, base, fn, feature_space, mc)
                     end = time.time()
                     print('%s_%s_%s_%d: %f' % (base, fn, mc, idx, end-start))
-        
