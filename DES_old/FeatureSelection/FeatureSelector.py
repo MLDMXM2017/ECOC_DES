@@ -1,9 +1,3 @@
-"""
-Feature Selection.
-
-Code by Tycho Zhong, Dec 6, 2017.
-"""
-
 import numpy as np
 
 class FeatureSelector(object):
