@@ -1,0 +1,1 @@
+The normalized data is stored in this directory.

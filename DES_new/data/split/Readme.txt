@@ -1,0 +1,1 @@
+The splited data is stored in this directory.

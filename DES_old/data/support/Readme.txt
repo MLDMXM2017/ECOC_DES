@@ -1,0 +1,1 @@
+The feature score is stored in this directory.
